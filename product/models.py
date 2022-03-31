@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.db import models
 from django.db.models.fields.files import ImageField
 from django_countries.fields import CountryField
@@ -102,4 +103,20 @@ class Women_wear(models.Model):
     item_sub_image1=models.ImageField(upload_to='pic')
     item_sub_image2=models.ImageField(upload_to='pic')
    
+
+class Special(models.Model):
+    item_number=models.CharField(max_length=200,null=False,unique=True)
+    item_name=models.CharField(max_length=200,null=False)
+    item_image=models.ImageField(upload_to='pic')
+    item_price1=models.CharField(max_length=200,null=False)
+    item_price2=models.CharField(max_length=200,null=False)
+    STATUS_TYPE_CHOICES=[
+        ('USED','USED'),
+        ('NEW','NEW')
+    ]
+    item_status=models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)
+    seller_name=models.CharField(max_length=200,null=False)
+
+
+
 
