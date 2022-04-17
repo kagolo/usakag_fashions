@@ -4,37 +4,39 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">      
 <head>
-<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Contact :: w3layouts</title>
+<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | About :: w3layouts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- css -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all" />
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css" media="all" />
 <!--// css -->
 <!-- font -->
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!-- //font -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
 </head>
 <body>
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-6 logo-w3">
-			<a href="index.html"><img src="images/logo2.png" alt=" " /><h1>FASHION<span>CLUB</span></h1></a>
+			<a href="index.html"><img src="{% static 'images/logo2.png' %}" alt=" " /><h1>FASHION<span>CLUB</span></h1></a>
 		</div>
 		<div class="col-md-6 phone-w3l">
 			<ul>
 				<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
-				<li>+18045403380</li>
+				<li>0704544125</li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>
@@ -118,8 +120,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>	
 								</ul>
 						</li>
-						<li><a href="about.html" class="hyper"><span>About</span></a></li>
-						<li class=" active"><a href="contact.html" class="hyper"><span>Contact Us</span></a></li>
+						<li class=" active"><a href="about.html" class="hyper"><span>About</span></a></li>
+						<li><a href="contact.html" class="hyper"><span>Contact Us</span></a></li>
 					</ul>
 				</div>
 			</nav>
@@ -158,43 +160,141 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>
 	</div>
 </div>
-<div class="sub-banner">
-</div>
-<div class="contact">
-	<div class="container">
-		<h3>Contact Us</h3>
-		<div class="col-md-3 col-sm-3 contact-left">
-			<div class="address">
-				<h4>ADDRESS</h4>
-				<h5>345 Setwant natrer,</h5>
-				<h5>Washington. United States.</h5>
+
+<div class="about">
+	<div class="container"> 
+		<h3>About Us</h3>
+		<div class="about-info">
+			<div class="col-md-8 about-grids">
+				<h4>Our latest collection</h4>
+				<p>Dignissimos at vero eos et accusamus et iusto odio ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecat officia. </p>		
+					<div class="about-w3ls-row">
+						<script type="text/javascript">
+								 $(window).load(function() {
+									$("#flexiselDemo3").flexisel({
+										visibleItems:2,
+										animationSpeed: 1000,
+										autoPlay: false,
+										autoPlaySpeed: 3000,    		
+										pauseOnHover: true,
+										enableResponsiveBreakpoints: true,
+										responsiveBreakpoints: { 
+											portrait: { 
+												changePoint:480,
+												visibleItems:2
+											}, 
+											landscape: { 
+												changePoint:640,
+												visibleItems:2
+											},
+											tablet: { 
+												changePoint:768,
+												visibleItems:2
+											}
+										}
+									});
+									
+								});
+						</script>
+						<script type="text/javascript" src="{% static 'js/jquery.flexisel.js' %}"></script>   
+						<ul id="flexiselDemo3">
+							{%if get_special_coll %} 
+							{% for get_special_coll in get_special_coll %}
+							<li>
+								<a href="{% url 'special_detail' get_special_coll.id %}">
+									<img src="{{get_special_coll.item_image.url}}" alt="">
+								</a>
+							</li>
+                            {% endfor %}
+					{%else%}
+					 <div class="card-body">
+						 <h4>No Data available</h4>
+					 </div>
+					 {%endif%}
+
+						</ul> 
+						<div class="clearfix"> </div>
+					</div>
 			</div>
-			<div class="phone">
-				<h4>PHONE</h4>
-				<h5>+1(401) 1234 567.</h5>
-				<h5>+1(804) 4261 150.</h5>
+			<div class="col-md-4 about-grids">
+					<h4>Our Advantages</h4>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>01</h5>
+						</div>
+						<div class="pince-right">
+							<p>We carryout door to door delivery services.</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>02</h5>
+						</div>
+						<div class="pince-right">
+							<p>Vero vulputate enim non justo posuere phasellus eget  mauris.</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>03</h5>
+						</div>
+						<div class="pince-right">
+							<p>Vero vulputate enim non justo posuere phasellus eget  mauris.</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="pince">
+						<div class="pince-left">
+							<h5>04</h5>
+						</div>
+						<div class="pince-right">
+							<p>Vero vulputate enim non justo posuere phasellus eget  mauris.</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
 			</div>
-			<div class="email">
-				<h4>EMAIL</h4>
-				<h5><a href="mailto:info@example.com">example@gmail.com</a></h5>
-				<h5><a href="mailto:info@example.com">example2@yahoo.com</a></h5>
-			</div>
-		</div>
-		<div class="col-md-9 col-sm-9 contact-right">
-			<form action="#" method="post">
-				<input type="text" name="your name" placeholder="Your name" required=" ">
-				<input type="text" name="your email" placeholder="Your email" required=" ">
-				<input type="text" name="your subject" placeholder="Your subject" required=" ">
-				<input type="text" name="your phone number" placeholder="Phone number" required=" ">
-				<textarea  name="your message" placeholder="Your message" required=" "></textarea>
-				<input type="submit" value="Send message">
-			</form>
+			<div class="clearfix"> </div>
 		</div>
 	</div>
 </div>
-<div class="map-w3ls">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22702.22744502486!2d11.113366067229226!3d44.662878362361056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fc3eca9065c15%3A0x12ec8a03aadae866!2s40019+Sant&#39;Agata+Bolognese+BO%2C+Italy!5e0!3m2!1sen!2sin!4v1451281303075" allowfullscreen></iframe>
+<!-- //about -->
+
+<!--team-->
+<div class="team" id="team">
+	<div class="container">
+		<h3> Our Team</h3>
+		<div class="team-grids">
+			{%if get_agents_all %}
+			{% for get_agents_all in get_agents_all %} 
+			<div class="col-md-3 team-grid">
+				<div class="team-img">
+					<img src="{{get_agents_all.agent_image.url}}" class="img-responsive" alt=" " />
+					<figcaption class="overlay">
+						<div class="social-icon">
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</figcaption>
+				</div>
+				<h4>{{ get_agents_all.agent_name}}</h4>
+				<h5>{{ get_agents_all.agent_position}}</h5>
+				<h5>{{ get_agents_all.agent_contact}}</h5>
+			</div>
+			{% endfor %}
+			{%else%}
+			<div class="card-body">
+				<h4>No Data available</h4>
+			</div>
+			{%endif%}
+			<div class="clearfix"></div>
+		</div>
+	</div>
 </div>
+<!--team-->
 <!-- newsletter -->
 	<div class="newsletter">
 		<div class="container">

@@ -6,6 +6,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 {% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">      
 <head>
@@ -120,13 +123,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <div class="content">
 	<div class="container">
+		{%if  user_scarve_filter  %}
+		<form method="get">	
+		{% for field in  user_scarve_filter.form.visible_fields %}
+      <div class="form-group">
+        {% render_field user_scarve_filter.form.item_name class="form-control" placeholder="Enter Item type" %}
+        {% for error in field.errors %}
+        <span class="help-block">{{ error }}</span>
+        {% endfor %}
+      </div>
+    {% endfor %}
+	<div class="form-group">
+		<button type="submit" class="btn btn-success">
+		  <span class="glyphicon glyphicon-ok"></span> Search
+		</button>
 		
-			{%if get_scarve_all %} 	
+	  </div>
+	     </form>
 			<div class="women-set1">
-				{% for get_scarve_all in get_scarve_all %}
+				{% for user_scarve_filter in user_scarve_filter.qs %}
 				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
-					<a href="{% url 'scarve_detail' get_scarve_all.id %}"><div class="product-img">
-						<img src="{{get_scarve_all.item_image.url}}" alt="" />
+					<a href="{% url 'scarve_detail' user_scarve_filter.id %}"><div class="product-img">
+						<img src="{{user_scarve_filter.item_image.url}}" alt="" />
 						<div class="p-mask">
 							<form action="#" method="post">
 								<input type="hidden" name="cmd" value="_cart" />
@@ -142,8 +160,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<i class="fa fa-star yellow-star" aria-hidden="true"></i>
 					<i class="fa fa-star yellow-star" aria-hidden="true"></i>
 					<i class="fa fa-star gray-star" aria-hidden="true"></i>
-					<h4>{{get_scarve_all.item_name}}</h4>
-					<h5>{{get_scarve_all.item_price}}</h5>
+					<h4>{{user_scarve_filter.item_name}}</h4>
+					<h5>{{user_scarve_filter.item_price}}</h5>
 				</div>
 				{% endfor %}
 

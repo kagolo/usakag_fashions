@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usakag_fashions',
     'product',
+    'crispy_forms',
+    'django_filters',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

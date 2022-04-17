@@ -117,6 +117,12 @@ class Special(models.Model):
     item_status=models.CharField(max_length=100,choices=STATUS_TYPE_CHOICES)
     seller_name=models.CharField(max_length=200,null=False)
 
+class Contact_us(models.Model):
+    agent_number=models.CharField(max_length=150,null=False,unique=True)
+    agent_name=models.CharField(max_length=200,null=False)
+    agent_position=models.CharField(max_length=200,null=False)
+    agent_contact=models.CharField(max_length=200,null=True)
+    agent_image=models.ImageField(upload_to='pic')
 
 
 

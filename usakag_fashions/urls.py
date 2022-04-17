@@ -41,13 +41,16 @@ urlpatterns = [
     path("Women_only", views.manage_women_only,name="women_only"),
     path("About_us", views. manage_about_us,"about_us"),
     path("Formal", views.manage_formals,"formal"),
-    path("Faq", views.manage_faq,"faq"),
    
     path('admin/', admin.site.urls),
 
     path("register", views.register, name= "register"),
     path("login", views.login_request, name="login"),
     path("logout", views.logout_request, name= "logout"),
+    path("contact", views.manage_contact, name="contact"),
+    path("kids", views.manage_kids, name="kids"),
+    path("faqs", views.manage_faqs, name="faqs")
+    
     
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

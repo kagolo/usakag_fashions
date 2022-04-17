@@ -15,8 +15,11 @@ from.men_wear_selector import(get_men_wear,get_men_wears)
 from.women_wear_selector import(get_women_wear,get_women_wears)
 from.Scarves_selectors import(get_Scarves,get_scarve)
 from.special_selector import(get_special,get_specials)
+from.Contact_selector import(get_agents)
 
 from .filters import Bag_filter
+from .filters import Scarves_filter
+from .filters import Men_filter
 
 
 # Create your views here.
@@ -118,33 +121,41 @@ def logout_request(request):
 
 def manage_bags_only(request):
     get_bagi = get_Bags()
+
+    user_bag_filter = Bag_filter(request.GET, queryset=get_bagi)
     
     context={
-        "get_bagi":get_bagi
+        "user_bag_filter":user_bag_filter
     }
     return render(request,'bags_only.html', context)
 
 def manage_scarves_only(request):
     get_scarve_all = get_Scarves()
     
+    user_scarve_filter = Scarves_filter(request.GET, queryset=get_scarve_all)
+
     context={
-          "get_scarve_all":get_scarve_all,
+          "user_scarve_filter":user_scarve_filter,
     }
     return render(request,'scarves_only.html',context)
 
 def manage_men_only(request):
     get_men_all_wear = get_men_wears()
 
+    user_men_filter = Men_filter(request.GET, queryset=get_men_all_wear)
+
     context={
-        "get_men_all_wear":get_men_all_wear,
+        "user_men_filter":user_men_filter,
     }
     return render(request,'men_only.html',context)
 
 def manage_women_only(request):
     get_women_all_wear = get_women_wears()
 
+    user_women_filter = Men_filter(request.GET, queryset=get_women_all_wear)
+
     context={
-        "get_women_all_wear":get_women_all_wear,
+        "user_women_filter":user_women_filter,
     }
     return render(request,'women_only.html',context)
 
@@ -152,18 +163,32 @@ def manage_women_only(request):
 
 
 def manage_about_us(request):
-    get_special_all = get_specials()
-
-    context={
-        "get_special_all":get_special_all,
-    }
     return render(request,'about.html',context)
 
 def manage_formals(request):
     return render(request,'formals.html')
 
-def manage_faq(request):
-    return render(request,'faq.html')
+
+def manage_contact(request):
+    
+    get_special_coll = get_specials()
+    get_agents_all = get_agents()
+
+    context={
+        "get_special_coll":get_special_coll,
+        "get_agents_all":get_agents_all,
+    }
+    return render(request, 'contact.html',context)
+
+def manage_kids(request):
+    return render(request, 'kids.html')
+
+def manage_faqs(request):
+    return render(request, 'faq.html')
+
+
+# filters
+
 
           
 

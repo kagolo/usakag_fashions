@@ -6,6 +6,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 
 {% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">      
 <head>
@@ -120,13 +122,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <div class="content">
 	<div class="container">
-	
-        {%if get_men_all_wear %}
+		{%if  user_men_filter  %}
+		<form method="get">	
+		{% for field in  user_men_filter.form.visible_fields %}
+      <div class="form-group">
+        {% render_field user_men_filter.form.item_name class="form-control" placeholder="Enter item name" %}
+        {% for error in field.errors %}
+        <span class="help-block">{{ error }}</span>
+        {% endfor %}
+      </div>
+    {% endfor %}
+	<div class="form-group">
+		<button type="submit" class="btn btn-success">
+		  <span class="glyphicon glyphicon-ok"></span> Search
+		</button>
+		
+	  </div>
+	     </form>
 			<div class="women-set1">
-				{% for get_men_all_wear in get_men_all_wear %}
+				{% for user_men_filter in user_men_filter.qs %}
 				<div class="col-md-4 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
-					<a href="{% url 'men_detail' get_men_all_wear.id %}"><div class="product-img">
-						<img src="{{get_men_all_wear.item_image.url}}" alt="" />
+					<a href="{% url 'men_detail' user_men_filter.id %}"><div class="product-img">
+						<img src="{{user_men_filter.item_image.url}}" alt="" />
 						<div class="p-mask">
 							<form action="#" method="post">
 								<input type="hidden" name="cmd" value="_cart" />
@@ -142,8 +159,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<i class="fa fa-star yellow-star" aria-hidden="true"></i>
 					<i class="fa fa-star yellow-star" aria-hidden="true"></i>
 					<i class="fa fa-star gray-star" aria-hidden="true"></i>
-					<h4>{{ get_men_all_wear.item_name}}</h4>
-					<h5>{{ get_men_all_wear.item_price}}</h5>
+					<h4>{{ user_men_filter.item_name}}</h4>
+					<h5>{{ user_men_filter.item_price}}</h5>
 				</div>
 				{% endfor %}
 
