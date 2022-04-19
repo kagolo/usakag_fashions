@@ -30,62 +30,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{% static 'js/bootstrap.js' %}"></script>
 </head>
 <body>
-<div class="header-top-w3layouts">
-	<div class="container">
-		<div class="col-md-6 logo-w3">
-			<a href="index.html"><img src="{% static 'images/logo2.png' %}" alt=" " /><h1>FASHION<span>CLUB</span></h1></a>
+	<div class="header-top-w3layouts">
+		<div class="container">
+			<div class="col-md-6 logo-w3">
+				<a href="{% url 'All_items' %}"><img src="{% static 'images/logo2.png' %}" alt=" " /><h1 style=color:lightgreen;>USAKAG <span>FASHIONS</span></h1></a>
+			</div>
+			<div class="col-md-6 phone-w3l">
+				<ul class="breadcrumb">
+					<li><a><span>Welcome:{{request.user.username}}</span></a></li>
+					<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>  0704544125</li>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
 		</div>
-		<div class="col-md-6 phone-w3l">
-			<ul>
-				<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
-				<li>+18045403380</li>
-			</ul>
-		</div>
-		<div class="clearfix"></div>
 	</div>
-</div>
-<div class="header-bottom-w3ls">
-	<div class="container">
-		<div class="col-md-7 navigation-agileits">
-			<nav class="navbar navbar-default">
-				<div class="navbar-header nav_2">
-					<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div> 
-				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-					<ul class="nav navbar-nav ">
-						<li class=" active"><a href="{% url 'All_items' %}" class="hyper "><span>Home</span></a></li>	
-						<li class="dropdown ">
-							<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Categories<b class="caret"></b></span></a>
-								<ul class="dropdown-menu multi">
-									<div class="row">
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-			
-												<li><a href="{% url 'men_only' %}"><i class="fa fa-angle-right" aria-hidden="true"></i>Men's Wear</a></li>
-												<li><a href="{% url 'women_only' %}"><i class="fa fa-angle-right" aria-hidden="true"></i>Women's Wear</a></li>
-												<li><a href="{% url 'bags_only' %}"> <i class="fa fa-angle-right" aria-hidden="true"></i>Bags</a></li>
-												<li><a href="{% url 'scarves_only' %}"><i class="fa fa-angle-right" aria-hidden="true"></i>Scarves & Veils</a></li>
-										
-											</ul>
-										
-										</div>
-										
-										
-									</div>	
-								</ul>
-						</li>
-						
-						<li><a href="about.html" class="hyper"><span>About Us</span></a></li>
-
-					</ul>
-				</div>
-			</nav>
-		</div>
+	<div class="header-bottom-w3ls">
+		<div class="container">
+			<div class="col-md-7 navigation-agileits">
+				<nav class="navbar navbar-default">
+					<div class="navbar-header nav_2">
+						<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div> 
+					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+						<ul class="nav navbar-nav ">
+							<li class=" active"><a href="{% url 'All_items' %}" class="hyper "><span>Home</span></a></li>	
+							<li class="dropdown ">
+								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Categories<b class="caret"></b></span></a>
+									<ul class="dropdown-menu multi">
+										<div class="row">
+											<div class="col-sm-4">
+												<ul class="multi-column-dropdown">
+				
+													<li><a href="{% url 'men_only' %}"><i class="fa fa-angle-right" aria-hidden="true"></i>Men's Wear</a></li>
+													<li><a href="{% url 'women_only' %}"><i class="fa fa-angle-right" aria-hidden="true"></i>Women's Wear</a></li>
+													<li><a href="{% url 'bags_only' %}"> <i class="fa fa-angle-right" aria-hidden="true"></i>Bags</a></li>
+													<li><a href="{% url 'scarves_only' %}"><i class="fa fa-angle-right" aria-hidden="true"></i>Scarves & Veils</a></li>
+											
+												</ul>
+											
+											</div>
+											
+											
+										</div>	
+									</ul>
+							</li>
+							
+							<li><a href="{% url 'contact' %}" class="hyper"><span>About Us</span></a></li>
+							<li><a href="{% url 'register' %}"><span>Register</span></a></li>
+							<li><a href="{% url 'login' %}"><span>Login</span></a></li>
+							<li><a href="{% url 'logout' %}"><span>Logout</span></a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
 								<script>
 				$(document).ready(function(){
 					$(".dropdown").hover(            
@@ -100,14 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					);
 				});
 				</script>
-		<div class="col-md-4 search-agileinfo">
-			<form action="#" method="post">
-				<input type="search" name="Search" placeholder="Search for a Product..." required="">
-				<button type="submit" class="btn btn-default search" aria-label="Left Align">
-					<i class="fa fa-search" aria-hidden="true"> </i>
-				</button>
-			</form>
-		</div>
+		
 		<div class="col-md-1 cart-wthree">
 			<div class="cart"> 
 				<form action="#" method="post" class="last"> 
@@ -173,67 +168,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
 	</div>
 </div>
-<!-- newsletter -->
-	<div class="newsletter">
-		<div class="container">
-			<div class="col-md-6 w3agile_newsletter_left">
-				<h2>Newsletter</h2>
-				<p>Excepteur sint occaecat cupidatat non proident, sunt.</p>
-			</div>
-			<div class="col-md-6 w3agile_newsletter_right">
-				<form action="#" method="post">
-					<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-					<input type="submit" value="Subscribe" />
-				</form>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-<!-- //newsletter -->
 <div class="footer">
 	<div class="container">
 		<div class="col-md-3 footer-grids fgd1">
-		<a href="index.html"><img src="images/logo2.png" alt=" " /><h3>FASHION<span>CLUB</span></h3></a>
+		<a href="{% url 'All_items' %}"><h3>USAKAG<span>FASHIONS</span></h3></a>
 		<ul>
-			<li>1234k Avenue, 4th block,</li>
-			<li>New York City.</li>
-			<li><a href="mailto:info@example.com">info@example.com</a></li>
+			<li>William Street,@Lockups Besides Trade Link shop No.504</li>
+			<li>Kampala City.</li>
+			<li><a href="mailto:info@example.com">Usakag56@gmail.com</a></li>
 			<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 			<a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
 			<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			<a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
 			<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 		</ul>
 		</div>
 		<div class="col-md-3 footer-grids fgd2">
 			<h4>Information</h4> 
 			<ul>
-				<li><a href="contact.html">Contact Us</a></li>
-				<li><a href="icons.html">Web Icons</a></li>
-				<li><a href="typography.html">Typography</a></li>
-				<li><a href="faq.html">FAQ's</a></li>
+				<li><a href="{% url 'contact' %}">Contact Us</a></li>
+				<li><a href="{% url 'kids' %}">Web Icons</a></li>
+				<li><a href="{% url 'faqs' %}">FAQ's</a></li>
 			</ul>
 		</div>
-		<div class="col-md-3 footer-grids fgd3">
-			<h4>Shop</h4> 
-			<ul>
-				<li><a href="jewellery.html">Jewellery</a></li>
-				<li><a href="cosmetics.html">Cosmetics</a></li>
-				<li><a href="Shoes.html">Shoes</a></li>
-				<li><a href="deos.html">Deos</a></li>
-			</ul>
-		</div>
+		
 		<div class="col-md-3 footer-grids fgd4">
 			<h4>My Account</h4> 
 			<ul>
-				
-				<li><a href="login.html">Login</a></li>
-				<li><a href="register.html">Register</a></li>
-				<li><a href="recommended.html">Recommended </a></li>
-				<li><a href="payment.html">Payments</a></li>
+				<li><a href="{% url 'register' %}">Register</a></li>
+				<li><a href="{% url 'login' %}">Login</a></li>
+				<li><a href="{% url 'logout' %}"><span>Logout</span></a></li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>
-		<p class="copy-right">© 2016 Fashion Club . All rights reserved | Design by <a href="http://w3layouts.com"> W3layouts.</a></p>
+		<p class="copy-right">© 2022 usakag fashions . All rights reserved | Design by <a href="#"> Usak.designs.</a></p>
 	</div>
 </div>
 	<!-- cart-js -->

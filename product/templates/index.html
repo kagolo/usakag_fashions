@@ -138,25 +138,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="mySlides fade">
 	  <div class="numbertext">1 / 4</div>
 	  <a href="{% url 'bags_only' %}"><img src="{% static 'images/banner65.jpg' %}">
-	  <div class="text"><h3 style=font-size:70px;color:lightgreen;>Usakag fashions<br>Men's Wear;</h3></div></a>
+	  <div class="text"><h3 style=font-size:50px;color:lightgreen;>Usakag fashions<br>Men's Wear;</h3></div></a>
 	</div>
 	
 	<div class="mySlides fade">
 	  <div class="numbertext">2 / 4</div>
 	  <a href="{% url 'scarves_only' %}"><img src="{% static 'images/scarves.jpg' %}">
-	  <div class="text"><h3 style=font-size:70px;color:lightgreen;>Usakag fashions<br>Scarves;</h3></div></a>
+	  <div class="text"><h3 style=font-size:50px;color:lightgreen;>Usakag fashions<br>Scarves;</h3></div></a>
 	</div>
 	
 	<div class="mySlides fade">
 	  <div class="numbertext">3 / 4</div>
 	  <a href="{% url 'men_only' %}"><img src="{% static 'images/shirts.jpg' %}">
-	  <div class="text" style=font-size:70px;color:lightgreen;>Usakag fashions<br>Men's Wear;</div></a>
+	  <div class="text" style=font-size:50px;color:lightgreen;>Usakag fashions<br>Men's Wear;</div></a>
 	</div>
 	
     <div class="mySlides fade">
 		<div class="numbertext">4 / 4</div>
 		<a href="{% url 'women_only' %}"><img src="{% static 'images/dresses.jpg' %}">
-		<div class="text" style=font-size:70px;color:lightgreen;>Usakag fashions<br>Women's Wear;</div></a>
+		<div class="text" style=font-size:50px;color:lightgreen;>Usakag fashions<br>Women's Wear;</div></a>
 	</div>
 
 	</div>
@@ -478,7 +478,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="footer">
 	<div class="container">
 		<div class="col-md-3 footer-grids fgd1">
-		<a href="index.html"><h3>USAKAG<span>FASHIONS</span></h3></a>
+		<a href="{% url 'All_items' %}"><h3>USAKAG<span>FASHIONS</span></h3></a>
 		<ul>
 			<li>William Street,@Lockups Besides Trade Link shop No.504</li>
 			<li>Kampala City.</li>
@@ -493,9 +493,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-3 footer-grids fgd2">
 			<h4>Information</h4> 
 			<ul>
-				<li><a href="contact.html">Contact Us</a></li>
+				<li><a href="{% url 'contact' %}">Contact Us</a></li>
 				<li><a href="{% url 'kids' %}">Web Icons</a></li>
-				<li><a href="typography.html">Typography</a></li>
 				<li><a href="{% url 'faqs' %}">FAQ's</a></li>
 			</ul>
 		</div>
@@ -503,15 +502,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-3 footer-grids fgd4">
 			<h4>My Account</h4> 
 			<ul>
-				
-				<li><a href="{% url 'login' %}">Login</a></li>
 				<li><a href="{% url 'register' %}">Register</a></li>
-				<li><a href="recommended.html">Recommended </a></li>
-				<li><a href="payment.html">Payments</a></li>
+				<li><a href="{% url 'login' %}">Login</a></li>
+				<li><a href="{% url 'logout' %}"><span>Logout</span></a></li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>
-		<p class="copy-right">© 2021 usakag fashions . All rights reserved | Design by <a href="#"> Usak.designs.</a></p>
+		<p class="copy-right">© 2022 usakag fashions . All rights reserved | Design by <a href="#"> Usak.designs.</a></p>
 	</div>
 </div>
 	<!-- cart-js -->
