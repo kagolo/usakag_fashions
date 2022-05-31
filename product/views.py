@@ -90,7 +90,7 @@ def register(request):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
-            user=form.cleaned_data.get('username')
+            user=form.cleaned_data.get('username','last_name')
             messages.success(request, 'Registered successfully'+user)
             return redirect("login")
 
