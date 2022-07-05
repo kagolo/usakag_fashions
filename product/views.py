@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import request
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
+from django.contrib.auth.decorators import login_required,user_passes_test
 
 from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth import login, authenticate, logout
@@ -40,7 +41,8 @@ def manage_products(request):
 
     }
     return render (request,"index.html",context)
-
+  
+@user_passes_test(lambda u: u.is_superuser, login_url='login')
 def manage_bag_detail(request,bag_id):
 
     bag_detail=get_Bag(bag_id)
@@ -60,8 +62,9 @@ def manage_women_wear_detail(request,women_wear_id):
 def manage_men_wear_detail(request,men_wear_id):
 
     men_wear_detail=get_men_wear(men_wear_id)
+    
     context={
-     "men_wear_detail":men_wear_detail
+     "men_wear_detail":men_wear_detail,
     }  
     return render(request,"men_single.html",context)
 

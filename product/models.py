@@ -81,7 +81,7 @@ class Men_wear(models.Model):
 class Women_wear(models.Model):
     item_number=models.CharField(max_length=200,null=False,unique=True)
     item_name=models.CharField(max_length=200,null=False)
-    stock_date=models.DateField(auto_now_add=True)
+    stock_date=models.DateField(auto_now_add=True) 
     country=CountryField(multiple=False)
     item_image=models.ImageField(upload_to='pic')
     item_price=models.CharField(max_length=200,null=False)
@@ -123,6 +123,4 @@ class Contact_us(models.Model):
     agent_position=models.CharField(max_length=200,null=False)
     agent_contact=models.CharField(max_length=200,null=True)
     agent_image=models.ImageField(upload_to='pic')
-
-
 
